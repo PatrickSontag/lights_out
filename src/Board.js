@@ -29,17 +29,42 @@ import "./Board.css";
 
 function Board({ nrows, ncols, chanceLightStartsOn }) {
   const [board, setBoard] = useState(createBoard());
-
-  return <div>lights out</div>;
+  console.log("nrows", nrows, "ncols", ncols);
   /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
   function createBoard() {
     let initialBoard = [];
-    // TODO: create array-of-arrays of true/false values
+    // DONE // TODO: create array-of-arrays of true/false values
+    for (let i = 0; i < nrows; i++) {
+      let currentRow = [];
+      for(let j = 0; j < ncols; j++) {
+        if (Math.floor((Math.random() * 100) + 1) >= chanceLightStartsOn) {
+          currentRow.push(false);
+        } else {
+          currentRow.push(true);
+        }
+      }
+      initialBoard.push(currentRow);
+    }
+    console.log("initialBoard", initialBoard);
+    hasWon(initialBoard);
+
     return initialBoard;
   }
 
-  function hasWon() {
-    // TODO: check the board in state to determine whether the player has won.
+  function hasWon(board) {
+    // DONE // TODO: check the board in state to determine whether the player has won.
+    console.log("hasWon", board);
+    for (let i of board) {
+      console.log("i", i);
+      for (let j of i) {
+        if (j === true) {
+          console.log("FALSE");
+          return false
+        }
+      }
+    }
+    console.log("TRUE");
+    return true;
   }
 
   function flipCellsAround(coord) {
@@ -54,11 +79,18 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
         }
       };
 
-      // TODO: Make a (deep) copy of the oldBoard
+      // DONE // TODO: Make a (deep) copy of the oldBoard
+      const boardCopy = JSON.parse(JSON.stringify(oldBoard));
 
-      // TODO: in the copy, flip this cell and the cells around it
+      // DONE // TODO: in the copy, flip this cell and the cells around it
+      flipCell(y, x, boardCopy);
+      flipCell(y-1, x, boardCopy);
+      flipCell(y+1, x, boardCopy);
+      flipCell(y, x-1, boardCopy);
+      flipCell(y, x+1, boardCopy);
 
-      // TODO: return the copy
+      // DONE // TODO: return the copy
+      return boardCopy
     });
   }
 
