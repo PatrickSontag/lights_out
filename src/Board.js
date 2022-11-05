@@ -81,10 +81,10 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
 
       // DONE // TODO: in the copy, flip this cell and the cells around it
       flipCell(y, x, boardCopy);
-      // flipCell(y-1, x, boardCopy);
-      // flipCell(y+1, x, boardCopy);
-      // flipCell(y, x-1, boardCopy);
-      // flipCell(y, x+1, boardCopy);
+      flipCell(y-1, x, boardCopy);
+      flipCell(y+1, x, boardCopy);
+      flipCell(y, x-1, boardCopy);
+      flipCell(y, x+1, boardCopy);
 
       // DONE // TODO: return the copy
       console.log("boardCopy", boardCopy);
@@ -98,17 +98,19 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
 
   // TODO: make table board
   return (
-  <>
-    {/* {board.map((c, i) => c.map((d, j) => <Cell isLit={board[i][j]} />))} */}
-    {board.map((c, i) => {
-      return <tr>{ 
-        c.map((d, j) => {
-          return <Cell isLit={board[i][j]} flipCellsAroundMe={flipCellsAround} />
-        }) }</tr>
-    })}
-    <button onClick={() => flipCellsAround("0-0")}>0-0</button>
-  </>)
-  
+    <table>
+        <tbody>
+        {/* {board.map((c, i) => c.map((d, j) => <Cell isLit={board[i][j]} />))} */}
+        {board.map((c, i) => {
+          return <tr>{ 
+            c.map((d, j) => {
+              return <Cell row={i} column={j} isLit={board[i][j]} flipCellsAroundMe={flipCellsAround} />
+            }) }</tr>
+        })}
+        {/* <button onClick={() => flipCellsAround("0-0")}>0-0</button> */}
+      </tbody>
+    </table>
+  )
 }
 
 export default Board;
