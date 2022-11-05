@@ -99,7 +99,13 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
   // TODO: make table board
   return (
   <>
-    {board.map((c, i) => c.map((d, j) => <Cell isLit={board[i][j]} />))}
+    {/* {board.map((c, i) => c.map((d, j) => <Cell isLit={board[i][j]} />))} */}
+    {board.map((c, i) => {
+      return <tr>{ 
+        c.map((d, j) => {
+          return <Cell isLit={board[i][j]} flipCellsAroundMe={flipCellsAround} />
+        }) }</tr>
+    })}
     <button onClick={() => flipCellsAround("0-0")}>0-0</button>
   </>)
   
