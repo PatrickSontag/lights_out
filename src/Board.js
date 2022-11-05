@@ -44,7 +44,7 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
       }
       initialBoard.push(currentRow);
     }
-    console.log("initialBoard", initialBoard);
+    // console.log("initialBoard", initialBoard);
     // hasWon(initialBoard);
 
     return initialBoard;
@@ -102,15 +102,13 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
       <div id="win">You Win!!</div>
     :
       <table id="game-board">
-          <tbody>
-          {/* {board.map((c, i) => c.map((d, j) => <Cell isLit={board[i][j]} />))} */}
+        <tbody>
           {board.map((c, i) => {
-            return <tr>{ 
+            return (<tr key={"row"+i}>{ 
               c.map((d, j) => {
-                return <Cell row={i} column={j} isLit={board[i][j]} flipCellsAroundMe={flipCellsAround} />
-              }) }</tr>
+                return <Cell key={i + "_" + j} row={i} column={j} isLit={board[i][j]} flipCellsAroundMe={flipCellsAround} />
+              }) }</tr>)
           })}
-          {/* <button onClick={() => flipCellsAround("0-0")}>0-0</button> */}
         </tbody>
       </table>
     
