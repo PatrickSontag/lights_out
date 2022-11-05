@@ -1,3 +1,13 @@
 .Board {
   margin: 0 auto;
 }
+
+#win {
+  font-size: 20vh;
+  color: rgb(255, 58, 101);
+}
+
+#game-board {
+  display: flex;
+  justify-content: center;
+}

@@ -98,18 +98,22 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
 
   // TODO: make table board
   return (
-    <table>
-        <tbody>
-        {/* {board.map((c, i) => c.map((d, j) => <Cell isLit={board[i][j]} />))} */}
-        {board.map((c, i) => {
-          return <tr>{ 
-            c.map((d, j) => {
-              return <Cell row={i} column={j} isLit={board[i][j]} flipCellsAroundMe={flipCellsAround} />
-            }) }</tr>
-        })}
-        {/* <button onClick={() => flipCellsAround("0-0")}>0-0</button> */}
-      </tbody>
-    </table>
+    hasWon(board) ? 
+      <div id="win">You Win!!</div>
+    :
+      <table id="game-board">
+          <tbody>
+          {/* {board.map((c, i) => c.map((d, j) => <Cell isLit={board[i][j]} />))} */}
+          {board.map((c, i) => {
+            return <tr>{ 
+              c.map((d, j) => {
+                return <Cell row={i} column={j} isLit={board[i][j]} flipCellsAroundMe={flipCellsAround} />
+              }) }</tr>
+          })}
+          {/* <button onClick={() => flipCellsAround("0-0")}>0-0</button> */}
+        </tbody>
+      </table>
+    
   )
 }
 

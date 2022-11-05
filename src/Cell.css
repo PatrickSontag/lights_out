@@ -1,12 +1,16 @@
 .Cell {
   height: 100px;
   width: 100px;
-  background-color: rgb(53, 15, 23);
+  background-color: rgb(75, 21, 33);
   cursor: pointer;
-  border: 2px solid black;
+  border: 25px solid rgb(53, 15, 23);
   border-radius: 50%;
+  box-sizing: border-box;
+
+  /* align-self: start; */
 }
 
 .Cell-lit {
-  background-color: rgb(255, 58, 101);
+  background-color: rgb(255, 97, 132);
+  border: 25px solid rgb(182, 57, 84);
 }
