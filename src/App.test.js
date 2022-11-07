@@ -10,3 +10,8 @@ it('should render Lights Out title', () => {
   const lightsOutTitle = screen.getByText(/lights out/i);
   expect(lightsOutTitle).toBeInTheDocument();
 });
+
+it("should match snapshot", () => {
+  const { asFragment } = render(<App />);
+  expect(asFragment()).toMatchSnapshot();
+})

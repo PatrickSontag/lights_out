@@ -5,8 +5,18 @@ it("should render without crashing", function() {
   render(<Board/>);
 })
 
-// it('should render Lights Out title', () => {
-//   render(<Board />);
-//   const lightsOutTitle = screen.getByText(/<table id="game-board">/);
-//   expect(lightsOutTitle).toBeInTheDocument();
+it("should match snapshot", () => {
+  const { asFragment } = render(<Board />);
+  expect(asFragment()).toMatchSnapshot();
+})
+
+// beforeEach(function() {
+//   jest
+//     .spyOn(Math, "random")
+//     .mockReturnValueOnce(0.25)
+//     .mockReturnValueOnce(0.75);
+// });
+
+// afterEach(function() {
+//   Math.random.mockRestore();
 // });
